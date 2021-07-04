@@ -1,6 +1,6 @@
 ---
 date: "2021-07-04"
-title: Closure traits
+title: "Rust closures: How a closure can implement more than one trait" 
 description: Closures in Rust implement a set of traits. In some cases there can more than one of these traits that a closure might implement.
 ---
 
