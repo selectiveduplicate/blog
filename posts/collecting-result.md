@@ -1,5 +1,5 @@
 ---
-date: "2021-08-07"
+date: "2021-08-08"
 title: "On Collecting Result Types in Rust" 
 description: The collect method in Rust can create collections from iterators. This post discusses how collecting Result types works.
 ---
