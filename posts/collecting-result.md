@@ -134,6 +134,8 @@ Let's try to break it down as much as we can. Only keep in mind for now that *we
   * `cloned()` creates a new iterator that clones (makes copies of) the underlying elements, i.e. the `Result` types. The clones aren't of type `&T` but type `T`.
 * `process_results` takes two arguments: a closure and an iterator. Since `cloned()` yields type `T`, `into_iter()` is used on `iter` so that it's possible to iterate over `T` types (refer to the [docs on the `iter` module](https://doc.rust-lang.org/std/iter/index.html#the-three-forms-of-iteration) if you're confused; it summarizes the types of iteration existing in Rust).
 
+#### The one who processes Results
+
 Here's the whole [`process_results` function](https://github.com/rust-lang/rust/blob/6830052c7b87217886324129bffbe096e485d415/library/core/src/iter/adapters/mod.rs#L138-L147):
 
 ```rust
@@ -150,6 +152,8 @@ where
 ```
 
 Looks like the closure works on a type called `ResultShunt`... what the heck is that?
+
+#### The iterator that wraps another iterator
 
 `ResultShunt` is another iterator that wraps the first iterator `iter` passed to the function. [Here's how `ResultShunt` looks like](https://github.com/rust-lang/rust/blob/6830052c7b87217886324129bffbe096e485d415/library/core/src/iter/adapters/mod.rs#L130-L133):
 
@@ -193,6 +197,8 @@ type Item = T;
 ```
 
 This indicates the *type* of elements being iterated over. So `collect` is actually collecting this `T` type, which already has a `FromIterator`  implementation (in our case, it's an integer). That explains how it yielded the vector containing all `Ok` variants in our example.
+
+#### Finally getting there...
 
 The implementation [has a try_fold method](https://github.com/rust-lang/rust/blob/6830052c7b87217886324129bffbe096e485d415/library/core/src/iter/adapters/mod.rs#L168-L183). Again, only the following bit of code is relevant for now:
 
