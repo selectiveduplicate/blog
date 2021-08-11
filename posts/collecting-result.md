@@ -175,7 +175,9 @@ At this point, let's think through a couple of things:
 * The doc comments describe the behavior we're investigating.
   * Quite intuitively, the `error` field only cares about the `E` type of a `Result` since it has to stop at the first encounter of an `Err` variant.
 
-The return type of `process_results` is a `Result<U,E>` type, whereas the closure it takes as a parameter returns only the `Ok` value `U`. *That's how the `collect` method in the closure ends up collecting the `Ok` variants if there are no errors.*
+The return type of `process_results` is a `Result<U,E>` type, whereas the closure it takes as a parameter returns only the `Ok` value `U`. 
+
+*That's how the `collect` method in the closure ends up collecting the `Ok` variants if there are no errors.*
 
 We don't need to go over all of [this implementation](https://github.com/rust-lang/rust/blob/6830052c7b87217886324129bffbe096e485d415/library/core/src/iter/adapters/mod.rs#L149-L197). For now, notice the type parameters that show up in the `impl` signature:
 
