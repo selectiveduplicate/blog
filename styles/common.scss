@@ -37,7 +37,8 @@ body {
 }
 
 .container {
-  margin: 40px 32%;
+  margin: 40px auto;
+  max-width: 85ch;
   blockquote {
     margin: 16px 0;
     padding: 0 1em;
@@ -56,7 +57,7 @@ a {
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 850px) {
   .container {
     margin: 32px 14%;
   }
