@@ -1,8 +1,8 @@
----
-date: "2021-08-08"
-title: "On Collecting Result Types in Rust" 
-description: The collect method in Rust can create collections from iterators. This post discusses how collecting Result types works.
----
++++
+title = "On Collecting Result Types in Rust" 
+description = "The collect method in Rust can create collections from iterators. This post discusses how collecting Result types works."
+date = "2021-08-08"
++++
 
 There's a good chance that today's topic being somewhat complex, I will end up explaining some stuff poorly. If it is and leaves something important off the discussion, I apologize beforehand. As someone new to Rust, I'm trying not to get too overwhelmed but at the same time squeezing out all the fun I'm able to. So I'm not exploring too deep for now so that I don't get lost in confusion. For readers who are also fairly new to Rust, I hope this post helps your understanding, maybe piques your interest too, without casting an ominous shadow of fear about the language.
 

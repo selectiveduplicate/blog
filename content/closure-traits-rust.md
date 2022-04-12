@@ -1,8 +1,8 @@
----
-date: "2021-07-04"
-title: "Rust closures: How a closure can implement more than one trait" 
-description: Closures in Rust implement a set of traits. In some cases there can more than one of these traits that a closure might implement.
----
++++
+title = "Rust closures: How a closure can implement more than one trait" 
+description = "Closures in Rust implement a set of traits. In some cases there can be more than one of these traits that a closure might implement."
+date = "2021-07-04"
++++
 
 A pretty interesting conversation took place on a [series of Tweets](https://twitter.com/Slctvdplcate/status/1404843998297018370?s=20) a while back on Rust closures. This was (and still is, although less than before) a confusing topic for me as a Rust newbie. So I was expecting some help from the Rust Twitter community. What I'm about to discuss today comes as a side effect out of that discussion; it wasn't my line of query initially.
 
