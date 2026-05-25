@@ -135,7 +135,7 @@ The majority of LLM API interactions involve JSON payloads, but not all. So the 
 
 Some frameworks inject tool definitions directly into the text of a system or user message. The policy accommodates this through a text-tag format. Tool definitions are marked with `<toolname>` and `<tooldescription>` tags; the user query is marked with a `<userq>` tag—for example:
 
-```xml
+```
 <toolname>get_weather</toolname>  
 <tooldescription>Get current weather and 7-day forecast for a location</tooldescription>  
 <userq>I'm planning a corporate retreat in Denver next weekend</userq>
