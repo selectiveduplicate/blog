@@ -35,6 +35,7 @@ main_menu = [
 
 socials = [
     { name = "github", url = "https://github.com/selectiveduplicate" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/selectiveduplicate/" },
 ]
 
 [extra.content_security_policy]
