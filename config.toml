@@ -2,6 +2,8 @@
 base_url = "https://diaries.vercel.app"
 title = "Sakib's blog"
 
+author = "Abu Sakib"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 generate_feeds = true
