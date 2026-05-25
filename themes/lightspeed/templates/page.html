@@ -2,7 +2,6 @@
 
 {% block title %}{{ page.title }} &middot; {{ config.title }}{% endblock title %}
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
-
 {% block ogtitle %}{{ page.title }}{% endblock ogtitle %}
 {% block ogdesc %}{{ page.description }}{% endblock ogdesc %}
 {% block ogurl %}{{ page.permalink | safe }}{% endblock ogurl%}

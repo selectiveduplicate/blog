@@ -17,9 +17,7 @@
 
     {% block seo -%}
       <meta property="og:site_name" content="{% block ogsitename %}{{config.title}}{% endblock ogsitename %}">
-      {% if config.extra.author -%}
-        <meta name="author" content="{{ config.extra.author }}" />
-      {%- endif %}
+      <meta name="author" content="{% block author %}{{config.author}}{% endblock author %}" />
       <meta property="og:title" content="{% block ogtitle %}{{config.title}}{% endblock ogtitle %}">
       <meta property="og:description" content="{% block ogdesc %}{{config.description}}{% endblock ogdesc %}">
       <meta property="og:url" content="{% block ogurl %}{{config.base_url | safe }}{% endblock ogurl %}">
@@ -79,13 +77,12 @@
         </nav>
         {% endif %}
         {% block taglines %}
-        <small>
-          {%- if config.extra.zola or config.extra.zola is undefined -%}Built with <a href="https://www.getzola.org/">Zola</a>{%- endif -%}
-          {%- if config.extra.netlify %} & hosted on <a href="https://netlify.com">Netlify</a>{%- endif -%}
-          {%- if config.extra.zola or config.extra.zola is undefined -%}.<br />{%- endif %}
-          {% if config.extra.maintained_with_love or config.extra.maintained_with_love is undefined%}Maintained with &hearts; for the web.<br />{% endif %}
-          {% if config.extra.footer_tagline %}{{ config.extra.footer_tagline }}{% endif %}
-        </small>
+          {%- if config.extra.footer_credits or config.extra.footer_credits is undefined -%}
+            <small>
+              {% set credits = "Built with [Zola](https://www.getzola.org) and [Lightspeed](https://github.com/carpetscheme/lightspeed)" %}
+              {{ credits | markdown(inline=true) | safe }}
+            </small>
+          {%- endif -%}
         {% endblock taglines %}
       </footer>
       {% endblock footer %}

@@ -123,14 +123,13 @@ Right aligned columns
 
 ## Images
 
-!["Still Life with Peaches and Grapes" by Auguste Renoir](https://images.metmuseum.org/CRDImages/ep/original/DT1876.jpg)
-![Mille-fleurs tapestry with three medallions](https://images.metmuseum.org/CRDImages/es/original/DP360507.jpg "Mille-fleurs tapestry with three medallions")
+![Mille-fleurs tapestry with three medallions](/DP360507.jpg "Mille-fleurs tapestry with three medallions")
 
-Like links, Images also have a footnote style syntax
+Like links, images can also have a footnote style syntax:
 
 ![The Unicorn is Attacked (from the Unicorn Tapestries][id]
 
-With a reference later in the document defining the URL location:
+With a reference later in the document defining the URL location.
 
 [id]: https://images.metmuseum.org/CRDImages/cl/original/DP101128.jpg  "The Unicorn is Attacked"
 

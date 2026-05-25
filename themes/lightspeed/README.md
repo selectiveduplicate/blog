@@ -1,15 +1,12 @@
 # Light Speed
 
-An insanely fast and performance-based Zola theme, ported from [Light Speed Jekyll](https://github.com/bradleytaunt/lightspeed).
-
-Some fun facts about the theme:
+A small Zola theme, ported from [Light Speed Jekyll](https://github.com/bradleytaunt/lightspeed).
 
 * Perfect score on Google's Lighthouse audit
 * Only ~700 bytes of CSS
 * No JavaScript
-* Now with SEO!
 
-Demo: [quirky-perlman-34d0da.netlify.com](https://quirky-perlman-34d0da.netlify.com)
+Demo: [carpetscheme.github.io/lightspeed](https://carpetscheme.github.io/lightspeed)
 
 -----
 
@@ -19,14 +16,12 @@ Demo: [quirky-perlman-34d0da.netlify.com](https://quirky-perlman-34d0da.netlify.
 - [Options](#options)
   - [Title](#title)
   - [Footer menu](#footer-menu)
-  - [SEO](#seo)
-  - [Footer text](#footer-text)
   - [Sass](#sass)
 - [Original](#original)
 - [License](#license)
 
 ## Installation
-First download this theme to your `themes` directory:
+Download this theme to your `themes` directory:
 
 ```bash
 $ cd themes
@@ -66,12 +61,9 @@ Set a field in `extra` with a key of `footer_links`:
 footer_links = [
     {url = "$BASE_URL/about", name = "About"},
     {url = "$BASE_URL/atom.xml", name = "RSS"},
-    {url = "https://google.com", name = "Google"},
+    {url = "https://example.com", name = "Example"},
 ]
 ```
-
-If you put `$BASE_URL` in a url, it will automatically be replaced by the actual
-site URL.
 
 Create pages such as `$BASE_URL/about` by placing them in a subfolder of the content directory, and specifying the path in the frontmatter:
 
@@ -79,34 +71,11 @@ Create pages such as `$BASE_URL/about` by placing them in a subfolder of the con
 path = "about"
 ```
 
-### SEO
-
-Most SEO tags are populated by the page metadata, but you can set the `author` and for the `og:image` tag provide the path to an image:
-
-```toml
-[extra]
-
-author = "Grant Green"
-ogimage = "Greenery.png"
-```
-
-### Footer-text
-
-By default the footer provides links to Zola and Netlify, and a tagline of "Maintained with :heart: for the web".
-To disable any of those parts, and/or add a custom tagline of your own, the following options are available:
-
-```toml
-[extra]
-
-zola = true
-netlify = false
-maintained_with_love = false
-footer_tagline = "What if everything is an illusion and nothing exists? In that case, I definitely overpaid for my carpet."
-```
+The footer credit to Zola and Lightspeed can be disabled with the `footer_credits` option.
 
 ### Sass
 
-Styles are compiled from sass and imported inline to the header :zap:
+Styles are compiled from sass and imported inline to the header.
 
 You can overide the styles by enabling sass compilation in the config:
 
@@ -114,7 +83,7 @@ You can overide the styles by enabling sass compilation in the config:
 compile_sass = true
 ```
 
-...and placing a replacement `style.scss` file in your sass folder.
+and placing a replacement `style.scss` file in your sass folder.
 
 ## Original
 This template is based on the Jekyll template [Light Speed Jekyll](https://github.com/bradleytaunt/lightspeed) by Bradley Taunt.
