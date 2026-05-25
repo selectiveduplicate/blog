@@ -36,13 +36,13 @@ We can observe a common origin in these problems: a static tools array, while us
 
 ## The naive solutions and why they don't scale
 
-So how to tackle these complications? The usual approaches, although natural and addressing the issues in some measure, don’t resolve the elementary problem, nor do they scale.
+So how to tackle these complications? The usual approaches, although natural and addressing the issues in some measure, don't resolve the elementary problem, nor do they scale.
 
 ### Curating tools per-endpoint
 
-Instinctively, you may want to curate the tools array manually: define which tools each endpoint receives and exclude everything else. It’s a sound strategy for narrow, well-defined endpoints with stable, predictable intent.
+Instinctively, you may want to curate the tools array manually: define which tools each endpoint receives and exclude everything else. It's a sound strategy for narrow, well-defined endpoints with stable, predictable intent.
 
-But what about an endpoint that serves varied intent, the architecture that agentic applications veer toward? In the cases of, for example, a general-purpose assistant or conversational interface, the tools any given query might require alters with the query itself. Manual curation therefore, in that context, is not as much a configuration decision you make once as it is a system upkeep. For every new tool now requires a review of every endpoint's curated list. Each modification to application behavior carries with it risks of discrepancies between what the endpoint receives and the query’s actual requirements.
+But what about an endpoint that serves varied intent, the architecture that agentic applications veer toward? In the cases of, for example, a general-purpose assistant or conversational interface, the tools any given query might require alters with the query itself. Manual curation therefore, in that context, is not as much a configuration decision you make once as it is a system upkeep. For every new tool now requires a review of every endpoint's curated list. Each modification to application behavior carries with it risks of discrepancies between what the endpoint receives and the query's actual requirements.
 
 We also observe a subtler failure where, by severely constraining an endpoint's tools, you unobtrusively debase capability. A tool mistakenly selected might result in a visible error, whereas a missing tool produces a response that simply does not invoke it, the latter being considerably harder to detect and diagnose.
 
@@ -121,7 +121,7 @@ The original tools array is replaced in-place with the filtered subset. The amen
 
 ### The Embedding cache
 
-The process described above calls an external embedding service on every request, or it would, without the built-in LRU cache. The cache makes the policy viable at production throughput, so let’s briefly discuss that.
+The process described above calls an external embedding service on every request, or it would, without the built-in LRU cache. The cache makes the policy viable at production throughput, so let's briefly discuss that.
 
 We can make a simple observation: tool names and descriptions remain static between requests, unlike user queries. So tool embeddings are computed once and stored; subsequent requests for the same tool retrieve the cached vector. Only the query embedding—the variable part—is computed anew on each request. At steady state, the cost of an embedding call per request reduces to only the cost of embedding a single short query string.
 
@@ -135,10 +135,10 @@ The majority of LLM API interactions involve JSON payloads, but not all. So the 
 
 Some frameworks inject tool definitions directly into the text of a system or user message. The policy accommodates this through a text-tag format. Tool definitions are marked with `<toolname>` and `<tooldescription>` tags; the user query is marked with a `<userq>` tag—for example:
 
-```
-<toolname\>get\_weather\</toolname\>  
-<tooldescription\>Get current weather and 7-day forecast for a location\</tooldescription\>  
-<userq\>I'm planning a corporate retreat in Denver next weekend\</userq\>
+```xml
+<toolname>get_weather</toolname>  
+<tooldescription>Get current weather and 7-day forecast for a location</tooldescription>  
+<userq>I'm planning a corporate retreat in Denver next weekend</userq>
 ```
 
 You use the boolean parameters `userQueryIsJson` and `toolsIsJson` to specify the extraction mode the policy applies to each component independently. This means the two components need not share a format. A request can carry the user query as a JSON field while embedding tool definitions in text tags, or vice versa. The `JSONPath` parameters remain active for whichever component uses JSON extraction; for text-based components, those paths point to the field containing the raw text from which the policy extracts the tags.
@@ -159,9 +159,8 @@ The tradeoff is that you need to calibrate deliberately. A lenient threshold val
 
 ### The role of tool descriptions
 
-Across both modes, filtering quality is contingent on description quality, a point I’ve made earlier. Cosine similarity measures the angular distance between two embedding vectors; but it cannot recompense for descriptions that fail to encode what a tool actually does. A sound description produces a precise vector that scores strongly against queries about the sought property or objective and weakly against everything else.
+Across both modes, filtering quality is contingent on description quality, a point I've made earlier. Cosine similarity measures the angular distance between two embedding vectors; but it cannot recompense for descriptions that fail to encode what a tool actually does. A sound description produces a precise vector that scores strongly against queries about the sought property or objective and weakly against everything else.
 
 ## Wrapping up
 
 Tool bloat can discreetly become a principal concern as applications accumulate capabilities, and compounds across cost, quality, and latency simultaneously. By dint of addressing it at the gateway, you can dispense the fix universally without affecting application code.
-

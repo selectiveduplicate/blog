@@ -1,6 +1,7 @@
 +++
 title = "About Me"
 path = "about"
+template = "plain-page.html"
 +++
 
 Hi. I'm Sakib.

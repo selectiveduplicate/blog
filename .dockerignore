@@ -1,0 +1,22 @@
+# Git metadata
+.git
+.gitignore
+
+# Zola build output and cache (rebuilt inside Docker)
+public/
+resources/
+
+# Go policy source code (not needed for website build)
+policies/
+
+# Policy versioned docs (not needed for website build)
+docs/
+
+# Scripts (not needed for website build)
+scripts/
+
+# macOS artifacts
+.DS_Store
+
+# Theme demo content (not served by the site)
+themes/terminus/content/

@@ -33,7 +33,7 @@ The comment says it: this closure doesn't capture anything from the scope. So wh
 
 Let's look at the [docs on `Fn`](https://doc.rust-lang.org/std/ops/trait.Fn.html):
 
-> Fn is implemented automatically by closures which only take immutable references to captured variables or don’t capture anything at all...
+> Fn is implemented automatically by closures which only take immutable references to captured variables or don't capture anything at all...
 
 So that's it then, right?
 
@@ -89,4 +89,3 @@ Bottomline:
 Oh `FnOnce` is also a supertrait of `Fnmut`...
 
 That's it for today's ramblings. Hope you've found it useful in some way. Thanks for reading!
-
